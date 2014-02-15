@@ -14,7 +14,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'test/purnam.native.js',
-      'test/test-clojure.js',
+      'test/test-native-functions.js',
       'test/test-native.js'
     ],
 
