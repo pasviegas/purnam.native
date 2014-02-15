@@ -13,5 +13,5 @@ TBD
 
 Copyright © 2014 Chris Zheng
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+ublic License either version 1.0 or (at
+Distributed under the The MIT License.
