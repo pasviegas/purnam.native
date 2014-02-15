@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/purnam/gyr.png?branch=master)](https://travis-ci.org/purnam/gyr)
 
-Native Clojurescript Operations for Purnam
+Native objects and arrays functions in clojurescript
 
 
 ## Usage
