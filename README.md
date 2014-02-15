@@ -1,6 +1,9 @@
 # purnam.native
 
+[![Build Status](https://travis-ci.org/purnam/purnam.native.png?branch=master)](https://travis-ci.org/purnam/purnam.native)
+
 Native Clojurescript Operations for Purnam
+
 
 ## Usage
 
