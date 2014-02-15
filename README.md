@@ -4,7 +4,7 @@ Native Clojurescript Operations for Purnam
 
 ## Usage
 
-See http://docs.caudate.me/purnam
+TBD
 
 ## License
 
