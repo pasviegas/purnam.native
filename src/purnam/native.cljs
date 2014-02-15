@@ -47,11 +47,6 @@
     (keyword? x) (name x)
     :else (str x)))
 
-#_(defn js-obj-name [this]
-  (if-let [[_ n] (re-find #"^function (\w+)" (str this))]
-    n
-    "Object"))
-
 (defn js-type [o]
   (let [ty (type o)
         ty (if (and ty (.-cljs$lang$type ty))
@@ -151,7 +146,9 @@
               
 (defn js-copy
   [o]
-  (gobj/clone o))
+  (let [t (js/goog.typeOf o)]
+    (cond (= t "array")  (garr/clone o)
+          :else (gobj/clone o))))
 
 (defn js-initial-value [v]
   (let [t (js/goog.typeOf v)]
