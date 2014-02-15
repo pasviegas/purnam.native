@@ -17,5 +17,5 @@ pom.xml.asc
 .nrepl-port
 samples/*-bak
 *.iml
-purnam.native.js
+gyr.js
 .repl

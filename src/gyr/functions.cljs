@@ -1,4 +1,4 @@
-(ns purnam.native.functions
+(ns gyr.functions
   (:require [goog.object :as gobj]
             [goog.array :as garr]
             [clojure.string :as st]))
@@ -234,6 +234,10 @@
   ([x y] (if (coll? x)
            (.log js/console (str x ":") (str y) y)
            (.log js/console (str x ":") (str y))) y))
+
+(defn obj-only [o method]
+  (when-not (identical? (type o) js/Object)
+    (throw (js/TypeError. (str (js-type o) " does not implement '" (name method) "'")))))
 
 (defn augment-fn-string [func]
  (if (string? func)

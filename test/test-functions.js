@@ -1,5 +1,5 @@
 
-var p = purnam["native$"].functions;
+var p = gyr.functions;
 var c = cljs.core;
 
 describe("Testing js-delete", function() {

@@ -1,6 +1,6 @@
-# purnam.native
+# gyr
 
-[![Build Status](https://travis-ci.org/purnam/purnam.native.png?branch=master)](https://travis-ci.org/purnam/purnam.native)
+[![Build Status](https://travis-ci.org/purnam/gyr.png?branch=master)](https://travis-ci.org/purnam/gyr)
 
 Native Clojurescript Operations for Purnam
 

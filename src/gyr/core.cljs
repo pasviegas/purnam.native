@@ -1,22 +1,18 @@
-(ns purnam.native
+(ns gyr.core
   (:require [goog.object :as gobject]
             [goog.array :as  garray]
-            [purnam.native.functions :as j]))
-            
-(defn obj-only [o method]
-  (when-not (identical? (type o) js/Object)
-    (throw (js/TypeError. (str (j/js-type o) " does not implement '" (name method) "'")))))
+            [gyr.functions :as j]))
 
 (extend-protocol ISeqable
   object
   (-seq [o]
-    (obj-only o :seq)
+    (j/obj-only o :seq)
     (map (fn [k] [k (get o k)]) (js-keys o))))
 
 (extend-protocol ICounted
   object
   (-count [o]
-    (obj-only o :count)
+    (j/obj-only o :count)
     (.-length (js-keys o)))
   array
   (-count [a]
@@ -47,7 +43,7 @@
     (j/js-assoc o k v))
 
   (-persistent! [o]
-    (obj-only o :persistent!)
+    (j/obj-only o :persistent!)
     (into {} (map (fn [[k v]] [(keyword k) v]) o)))
 
   array
@@ -61,7 +57,7 @@
 (extend-protocol ITransientMap
   object  
   (-dissoc! [o k]
-    (obj-only o :dissoc!)
+    (j/obj-only o :dissoc!)
     (j/js-dissoc o k))
     
   array
@@ -71,7 +67,7 @@
 (extend-protocol IEmptyableCollection
   object
   (-empty [o]
-    (obj-only o :empty)
+    (j/obj-only o :empty)
     (js-obj))
   array
   (-empty [a]
@@ -80,7 +76,7 @@
 (extend-protocol IAssociative
   object
   (-assoc [o i v]
-    (obj-only o :assoc)
+    (j/obj-only o :assoc)
     (j/js-assoc
         (j/js-copy o) i v))
         
@@ -93,7 +89,7 @@
 (extend-protocol IMap
  object
  (-dissoc [o k]
-   (obj-only o :dissoc)
+   (j/obj-only o :dissoc)
    (j/js-dissoc
       (j/js-copy o) k))
       
