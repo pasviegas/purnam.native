@@ -1,4 +1,4 @@
-(ns gyr.functions
+(ns purnam.native.functions
   (:require [goog.object :as gobj]
             [goog.array :as garr]
             [clojure.string :as st]))

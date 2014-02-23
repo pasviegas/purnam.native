@@ -13,9 +13,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/gyr.js',
-      'test/test-functions.js',
-      'test/test-core.js'
+      'target/purnam.native.js',
+      'test/test-*.js',
     ],
 
 

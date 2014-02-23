@@ -1,6 +1,6 @@
-# gyr
+# purnam.native
 
-[![Build Status](https://travis-ci.org/purnam/gyr.png?branch=master)](https://travis-ci.org/purnam/gyr)
+[![Build Status](https://travis-ci.org/purnam/purnam.native.png?branch=master)](https://travis-ci.org/purnam/purnam.native)
 
 Native objects and arrays functions in clojurescript
 

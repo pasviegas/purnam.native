@@ -1,7 +1,7 @@
-(ns gyr.core
+(ns purnam.native
   (:require [goog.object :as gobject]
-            [goog.array :as  garray]
-            [gyr.functions :as j]))
+            [goog.array  :as garray]
+            [purnam.native.functions :as j]))
 
 (extend-protocol ISeqable
   object
