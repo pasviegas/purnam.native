@@ -1,4 +1,4 @@
-(defproject im.chit/gyr "0.4.0"
+(defproject im.chit/gyr "0.4.1"
   :description "Native objects and arrays functions in clojurescript"
   :url "http://www.github.com/purnam/gyr"
   :license {:name "The MIT License"

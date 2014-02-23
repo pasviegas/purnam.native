@@ -227,6 +227,10 @@
       (.push output v))
     output))
 
+(defn js-arities [f]
+  (or (.-cljs$arities f)
+      [(.-length f)]))
+
 (defn log
   ([x] (if (coll? x)
          (.log js/console (str x) x)
