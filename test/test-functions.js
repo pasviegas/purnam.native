@@ -152,23 +152,3 @@ describe("Testing js-deep-copy", function() {
   });
 });
 
-describe("Testing js-map* and js-map", function() {
-  it("replaces the contents of a object with another", function() {    
-    expect(p.js_map(function(a,b){return a + b;},
-    [1,2,3],[4,5,6])).toEqual([5,7,9]);
-    
-    expect(p.js_map_STAR_(function(a,b){return a + b;},
-    [1,2,3],[4,5,6])).toEqual([5,7,9]);
-  });
-});
-
-describe("Testing js-mapcat* and js-mapcat", function() {
-  it("replaces the contents of a object with another", function() {    
-    expect(p.js_mapcat(function(a,b){return [a + b];},
-    [1,2,3],[4,5,6])).toEqual([5,7,9]);
-    
-    expect(p.js_mapcat_STAR_(function(a,b){return [a + b];},
-    [1,2,3],[4,5,6])).toEqual([5,7,9]);
-  });
-});
-

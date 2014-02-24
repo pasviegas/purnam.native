@@ -8,9 +8,10 @@
             js-assoc js-dissoc js-empty
             js-merge js-merge-nil
             js-copy js-deep-copy
-            js-replace js-deep-replace]])
-  (:use-macros [purnam.core :only [obj arr]]
-               [purnam.test :only [fact facts]]))
+            js-replace js-deep-replace
+            js-map js-mapcat js-concat
+            js-arities]])
+  (:use-macros [purnam.test :only [fact facts]]))
 
 [[:chapter {:title "purnam.native" :tag "purnam-native"}]]
 
@@ -21,22 +22,22 @@
 (facts [[{:doc "js-lookup"}]]
 
   "`js-lookup` is like `get` for native javascript. It works with keywords and strings"
-  (js-lookup (obj :a 1 :b 2) "a") => 1
-  (js-lookup (obj :a 1 :b 2) :b) => 2)
+  (js-lookup (js* "{a:1, b:2}") "a") => 1
+  (js-lookup (js* "{a:1, b:2}") :b) => 2)
 
 [[:section {:title "js-equals"}]]
 
 (facts [[{:doc "js-equals"}]]
   
   "`js-equals` checks for equality on native objects. The clojurescript equality `=` does not check for equality on native objects"
-  (= (obj :a 1) (obj :a 1)) => false?
+  (= (js* "{a:1}") (js* "{a:1}")) => false?
 
   "`js-equals` fills this gap:"
-  (js-equals (obj :a 1) (obj :a 1)) => true
+  (js-equals (js* "{a:1}") (js* "{a:1}")) => true
   
   "`js-equals` will also check equality for nested native objects and arrays"
-  (js-equals (obj :a [{:b [{:c 1}]}])
-              (obj :a [{:b [{:c 1}]}])) => true)
+  (js-equals (js* "{a:[{b: [{c: 1}]}]}")
+             (js* "{a:[{b: [{c: 1}]}]}")) => true)
 
 [[:section {:title "js-assoc"}]]
 
@@ -44,14 +45,14 @@
 
   "`js-assoc` is the native mutable version of `assoc`, it works with both keyword and string keys"
 
-  (def o (obj :a 1))
+  (def o (js* "{a:1}"))
   
   [[{:numbered false}]]
   (js-assoc o "b" 2)  ;; string
-  => (obj :a 1 :b 2)
+  => (js* "{a:1,b:2}")
   
   (js-assoc o :c 3 "d" 4)  ;; keyword and string 
-  => (obj :a 1 :b 2 :c 3 :d 4)
+  => (js* "{a:1,b:2,c:3,d:4}")
   
   "`js-assoc` also works with native arrays and allows number keys"
   
@@ -71,11 +72,11 @@
 
   "`js-dissoc` is the native mutable version of `dissoc`, it works with both keyword and string keys"
 
-  (def o (obj :a 1 :b 2 :c 3 :d 4))
+  (def o (js* "{a:1,b:2,c:3,d:4}"))
   
   [[{:numbered false}]]
   (js-dissoc o "a" :b :c)
-  => (obj :d 4))
+  => (js* "{d:4}"))
 
 [[:section {:title "js-empty"}]]
 
@@ -83,11 +84,11 @@
 
   "`js-empty` is the native mutable version of `empty`"
 
-  (def o (obj :a 1 :b 2 :c 3 :d 4))
+  (def o (js* "{a:1,b:2,c:3,d:4}"))
   
   [[{:numbered false}]]
   (js-empty o)
-  => (obj))
+  => (js-obj))
 
 [[:section {:title "js-merge"}]]
 
@@ -95,17 +96,17 @@
 
   "`js-merge` is the native mutable version of `merge`. It will only mutate the first object argument."
 
-  (def o1 (obj :a 1))
-  (def o2 (obj :b 2))
+  (def o1 (js* "{a:1}"))
+  (def o2 (js* "{b:2}"))
   
   [[{:numbered false}]]
   (js-merge o1 o2)
-  => (obj :a 1 :b 2)
+  => (js* "{a:1,b:2}")
   
   "If the keys are the same, it will overwrite"
-  (def o3 (obj :b 3))
+  (def o3 (js* "{b:3}"))
   (js-merge o1 o3)
-  => (obj :a 1 :b 3))
+  => (js* "{a:1,b:3}"))
 
 [[:section {:title "js-merge-nil"}]]
 
@@ -113,12 +114,12 @@
 
   "`js-merge-nil` is like `js-merge` but it will only merge the keys that are not defined"
 
-  (def o1 (obj :a 1))
-  (def o2 (obj :a 2 :b 2))
+  (def o1 (js* "{a:1}"))
+  (def o2 (js* "{a:2,b:2}"))
   
   [[{:numbered false}]]
   (js-merge-nil o1 o2)
-  => (obj :a 1 :b 2))
+  => (js* "{a:1,b:2}"))
 
 [[:section {:title "js-copy"}]]
 
@@ -126,7 +127,7 @@
 
   "`js-copy` creates another object with the same key/values"
 
-  (def o1 (obj :a 1))
+  (def o1 (js* "{a:1,b:2}"))
   (def o2 (js-copy o1))
   
   [[{:numbered false}]]
@@ -140,8 +141,7 @@
 
   "`js-deep-copy` copys everything about an object, including circular references"
 
-  (def o1 (obj :val 1 
-               :ref self))
+  (def o1 (js* "function(){var a = {val:1}; a.ref = a; return a;}()"))
   (def o2 (js-deep-copy o1))
   
   "Notice that we can walk o2."
@@ -162,6 +162,41 @@
 
   "`js-replace` is like `js-copy`, but it uses keeps the pointer to the first object argument"
 
-  (def o1 (obj :a 1))
-  (js-replace o1 (obj :b 2))
-  o1 => (obj :b 2))
+  (def o1 (js* "{a:1}"))
+  (js-replace o1 (js* "{b:2}"))
+  o1 => (js* "{b:2}"))
+
+[[:section {:title "js-map"}]]
+(facts [[{:doc "js-map"}]]
+  "A multi argument version of map, like clojure's map but returns a native arrays"
+
+  (js-map + (js* "[1,2,3,4]") 
+            (js* "[5,6,7,8]") 
+            [9 10 11 12])
+  => (js* "[15,18,21,24]"))
+
+[[:section {:title "js-concat"}]]
+(facts [[{:doc "js-concat"}]]
+"Concats multiple arrays into a single native arrays"
+
+(js-concat (js* "[1,2,3,4]") 
+           (js* "[5,6,7,8]") 
+           [9 10 11 12])
+=> (js* "[1,2,3,4,5,6,7,8,9,10,11,12]"))
+  
+[[:section {:title "js-mapcat"}]]
+(facts [[{:doc "js-mapcat"}]]
+  "Like clojure's mapcat but returns a native arrays"
+
+  (js-mapcat list (js* "[1,2,3,4]") 
+                  (js* "[5,6,7,8]") 
+                  [9 10 11 12])
+  => (js* "[1,5,9,2,6,10,3,7,11,4,8,12]"))
+
+[[:section {:title "js-arities"}]]
+(facts [[{:doc "js-arities"}]]
+  "Returns all arities of a function. Works with f.n and def.n"
+
+  (js-arities (fn [x] x))
+  => [1])
+
