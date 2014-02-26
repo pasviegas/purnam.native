@@ -1,5 +1,4 @@
 (ns midje-doc.purnam-native
-  
   (:require
     [purnam.test] 
     [purnam.native.functions 
@@ -13,7 +12,7 @@
             js-arities]])
   (:use-macros [purnam.test :only [fact facts]]))
 
-[[:chapter {:title "purnam.native" :tag "purnam-native"}]]
+[[:chapter {:title "purnam.native.functions" :tag "purnam-native"}]]
 
 "Utility functions for javascript native objects and arrays."
 

@@ -1,5 +1,5 @@
 (defproject im.chit/purnam.native "0.4.0"
-  :description "Native objects and arrays functions in clojurescript"
+  :description "Native objects and arrays functions for clojurescript"
   :url "http://www.github.com/purnam/purnam.native"
   :license {:name "The MIT License"
             :url "http://opensource.org/licencses/MIT"}
@@ -9,9 +9,9 @@
                                   [midje "1.6.0"]]
                    :plugins [[lein-cljsbuild "1.0.0"]]}}
   :documentation {:files {"doc/index"
-                         {:input "test/midje_doc/purnam_native.cljs"
+                         {:input "test/midje_doc/purnam_native_guide.dclj"
                           :title "purnam.native"
-                          :sub-title "Native objects and arrays functions in clojurescript"
+                          :sub-title "Native objects and arrays functions for clojurescript"
                           :author "Chris Zheng"
                           :email  "z@caudate.me"
                           :tracking "UA-31320512-2"}}}
