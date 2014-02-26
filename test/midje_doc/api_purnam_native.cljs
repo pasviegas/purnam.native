@@ -46,7 +46,7 @@
 
 (facts [[{:doc "transient protocol"}]]
 
-  "The clojure transient protocol allow native js objects arrays to be manipulated using transient methods"
+  "Transient protocol allow native js objects arrays to be manipulated using assoc!, dissoc! and persistent!"
 
   (let [o (js-obj)]
     (assoc! o :a 1)
