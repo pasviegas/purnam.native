@@ -1,16 +1,17 @@
 (ns midje-doc.api-purnam-native
-  (:require [purnam.native])
+  (:require [purnam.native]
+            [purnam.test])
   (:use-macros [purnam.test :only [fact facts]]))
 
 [[:chapter {:title "purnam.native" :tag "purnam-native"}]]
 
 "Clojure protocols for javascript native objects and arrays."
 
-[[:section {:title "init" :tag "init-types"}]]
+[[:section {:title "init" :tag "init-native"}]]
 
-(comment
-  "To use this package, require purnam.native in your namespace"
-  
+"To use this package, require `purnam.native` in your namespace"
+
+(comment  
   (:require [purnam.native]))
 
 [[:section {:title "seq protocol"}]]

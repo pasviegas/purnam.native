@@ -9,7 +9,7 @@
                                   [midje "1.6.0"]]
                    :plugins [[lein-cljsbuild "1.0.0"]]}}
   :documentation {:files {"doc/index"
-                         {:input "test/midje_doc/purnam_native_guide.dclj"
+                         {:input "test/midje_doc/purnam_native_guide.clj"
                           :title "purnam.native"
                           :sub-title "Native objects and arrays functions for clojurescript"
                           :author "Chris Zheng"

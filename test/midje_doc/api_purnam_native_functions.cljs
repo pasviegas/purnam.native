@@ -12,7 +12,16 @@
             js-arities]])
   (:use-macros [purnam.test :only [fact facts]]))
 
-[[:chapter {:title "purnam.native.functions" :tag "purnam-native"}]]
+[[:chapter {:title "purnam.native.functions" :tag "purnam-native-functions"}]]
+
+"Clojure protocols for javascript native objects and arrays."
+
+[[:section {:title "init" :tag "init-native-functions"}]]
+
+"To use this package, require `purnam.native.functions` in your namespace"
+
+(comment  
+  (:require [purnam.native.functions :refer [js-lookup js-equals ....]]))
 
 "Utility functions for javascript native objects and arrays."
 
