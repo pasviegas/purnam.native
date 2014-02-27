@@ -4,7 +4,6 @@
 
 Native objects and arrays functions in clojurescript
 
-
 ## Quickstart
 
 Stable Version: 
@@ -13,17 +12,10 @@ Stable Version:
 
 Documentation:
 
-
-
-## Documentation
-
-
-
-
+- [API](http://purnam.github.io/purnam.native/)
 
 ## License
 
 Copyright © 2014 Chris Zheng
 
-ublic License either version 1.0 or (at
 Distributed under the The MIT License.

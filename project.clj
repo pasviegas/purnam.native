@@ -1,6 +1,6 @@
 (defproject im.chit/purnam.native "0.4.0"
   :description "Native objects and arrays functions for clojurescript"
-  :url "http://www.github.com/purnam/purnam.native"
+  :url "http://purnam.github.io/purnam.native/"
   :license {:name "The MIT License"
             :url "http://opensource.org/licencses/MIT"}
   :dependencies [[org.clojure/clojure "1.5.1"]]
