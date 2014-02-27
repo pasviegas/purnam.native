@@ -15,11 +15,10 @@
 
 to `project.clj` dependencies. The library is also included when:
  
-   `[im.chit/purnam` \"`{{PROJECT.version}}`\"`]`"
+   `[im.chit/purnam` \"`{{PROJECT.version}}`\"`]`
    
-is added to `project.clj` dependencies.
+is added to `project.clj` dependencies."
     
 [[:file {:src "test/midje_doc/api_purnam_native.cljs"}]]
 
 [[:file {:src "test/midje_doc/api_purnam_native_functions.cljs"}]]
-
