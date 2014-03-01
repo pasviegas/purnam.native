@@ -8,7 +8,7 @@ Native objects and arrays functions in clojurescript
 
 Stable Version: 
 
-    [im.chit/purnam.native "0.4.0"]
+    [im.chit/purnam.native "0.4.3"]
 
 Documentation:
 

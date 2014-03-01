@@ -9,15 +9,11 @@
 
 [[:chapter {:title "Installation"}]]
 
-"To use just the native functionality, add:
+"To use just the native functionality, add to `project.clj` dependencies:
 
   `[im.chit/purnam.native` \"`{{PROJECT.version}}`\"`]` 
 
-to `project.clj` dependencies. The library is also included when:
- 
-   `[im.chit/purnam` \"`{{PROJECT.version}}`\"`]`
-   
-is added to `project.clj` dependencies."
+The library is also included when `[im.chit/purnam` \"`{{PROJECT.version}}`\"`]` is added to `project.clj` dependencies."
     
 [[:file {:src "test/midje_doc/api_purnam_native.cljs"}]]
 
