@@ -125,9 +125,9 @@
 
 (extend-protocol ICollection
   object
-  (-conj [parent & pairs]
+  (-conj [parent pairs]
     (js-conj-object parent pairs))
 
   array
-  (-conj [parent & values]
+  (-conj [parent values]
     (js-conj-array parent values)))
