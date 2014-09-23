@@ -1,11 +1,11 @@
-(defproject im.chit/purnam.native "0.4.3"
+(defproject im.chit/purnam.native "0.4.4"
   :description "Native objects and arrays functions for clojurescript"
   :url "http://www.github.com/purnam/purnam.native/"
   :license {:name "The MIT License"
             :url "http://opensource.org/licencses/MIT"}
   :dependencies [[org.clojure/clojure "1.6.0"]]
   :profiles {:dev {:dependencies [[org.clojure/clojurescript "0.0-2342"]
-                                  [im.chit/purnam.test "0.4.3"]
+                                  [im.chit/purnam.test "0.4.4"]
                                   [midje "1.6.3"]]
                    :plugins [[lein-ancient "0.5.5"]
                              [lein-cljsbuild "1.0.3"]]}}
